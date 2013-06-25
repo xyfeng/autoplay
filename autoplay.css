@@ -1,0 +1,164 @@
+/*
+Created by XY Feng on 04/02/13.
+Copyright (c) 2013 Xiaoyang Feng. All rights reserved.
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+*/
+#autoplay_display {
+  z-index: 10002;
+  display: none;
+}
+#autoplay_display .message {
+  font-family: Arial;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+}
+#autoplay_display.center {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+}
+#autoplay_display.center .message {
+  width: 600px;
+  height: 200px;
+  position: absolute;
+  margin-left: -300px;
+  margin-top: -100px;
+  left: 50%;
+  top: 50%;
+  font-size: 45px;
+  line-height: 60px;
+}
+#autoplay_display.bottom {
+  position: fixed;
+  width: 100%;
+  height: 150px;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+}
+#autoplay_display.bottom .message {
+  font-size: 24px;
+  line-height: 30px;
+  margin-top: 50px;
+}
+#autoplay_cursor {
+  position: fixed;
+  z-index: 10001;
+  background: transparent;
+}
+#autoplay_cursor .one {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  left: -16px;
+  top: -16px;
+  background: #FFF;
+  border-radius: 16px;
+  -webkit-box-shadow: 0 0 8px #444;
+  -moz-box-shadow: 0 0 8px #444;
+  box-shadow: 0 0 8px #444;
+}
+#autoplay_cursor .two {
+  width: 24px;
+  height: 24px;
+  left: -12px;
+  top: -12px;
+  background: #46bd00;
+  border-radius: 12px;
+  position: absolute;
+}
+#autoplay_cursor.click .two {
+  width: 16px;
+  height: 16px;
+  left: -8px;
+  top: -8px;
+  border-radius: 8px;
+}
+#autoplay_cursor.scrollx .one {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: -12px;
+  left: -16px;
+  background: transparent;
+  border-left: none;
+  border-right: 8px solid #46bd00;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-radius: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+#autoplay_cursor.scrollx .two {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: -12px;
+  left: 8px;
+  background: transparent;
+  border-left: 8px solid #46bd00;
+  border-right: none;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-radius: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+#autoplay_cursor.scrolly .one {
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -12px;
+  top: -16px;
+  background: transparent;
+  border-top: none;
+  border-bottom: 8px solid #46bd00;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-radius: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+#autoplay_cursor.scrolly .two {
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -12px;
+  top: 8px;
+  background: transparent;
+  border-top: 8px solid #46bd00;
+  border-bottom: none;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-radius: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
