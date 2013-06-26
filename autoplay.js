@@ -212,6 +212,14 @@ autoplay = {
       });
       instance.cursor.delay(300);
     };
+    var checkObj = function(obj, line) {
+      if( $(obj).length !== 1 )
+      {
+        console.log( 'Error!!! \n   Line: ' + line + '\n   Index: ' + (instance.commandIndex - 1) + '\n   Object:' + obj + '\n   Found: ' + $(obj).length);
+        return false;
+      }
+      return true;
+    };
 
     var decodeCommand = function(){
       var line;
@@ -265,19 +273,46 @@ autoplay = {
             if( parameters.length === 3)
               duration = parseInt(parameters[2], 10)
           }
-          moveTo(obj, x, y, duration, decodeCommand);
+          if( obj === null || checkObj(obj, line) )
+          {
+            moveTo(obj, x, y, duration, decodeCommand);
+          }
+          else {
+            decodeCommand();
+          }
           break;
         case 'hover':
-          hoverObj(parameters[1], decodeCommand);
+          var obj = parameters[1];
+          if( checkObj(obj, line) )
+          {
+            hoverObj(obj, decodeCommand);
+          }
+          else {
+            decodeCommand();
+          }
           break;
         case 'wait':
           waitForMilliseconds(parseInt(parameters[1], 10), decodeCommand);
           break;
         case 'click':
-          clickObj(parameters[1], decodeCommand);
+          var obj = parameters[1];
+          if( checkObj(obj, line) )
+          {
+            clickObj(obj, decodeCommand);
+          }
+          else {
+            decodeCommand();
+          }
           break;
         case 'type':
-          typeObj(parameters[1], parameters[2], decodeCommand);
+          var obj = parameters[1];
+          if( checkObj(obj, line) )
+          {
+            typeObj(obj, parameters[2], decodeCommand);
+          }
+          else {
+            decodeCommand();
+          }
           break;
         case 'scrollx':
           var parameter = parameters[1];
@@ -286,7 +321,14 @@ autoplay = {
             scrollObj('body', 'x', parseInt(parameter, 10), decodeCommand);
           }
           else{
-            scrollObj(parameters[1], 'x', parseInt(parameters[2], 10), decodeCommand);
+            var obj = parameters[1];
+            if( checkObj(obj, line) )
+            {
+              scrollObj(obj, 'x', parseInt(parameters[2], 10), decodeCommand);
+            }
+            else {
+              decodeCommand();
+            }
           }
           break;
         case 'scrolly':
@@ -296,7 +338,14 @@ autoplay = {
             scrollObj('body', 'y', parseInt(parameter, 10), decodeCommand);
           }
           else{
-            scrollObj(parameters[1], 'y', parseInt(parameters[2], 10), decodeCommand);
+            var obj = parameters[1];
+            if( checkObj(obj, line) )
+            {
+              scrollObj(obj, 'y', parseInt(parameters[2], 10), decodeCommand);
+            }
+            else {
+              decodeCommand();
+            }
           }
           break;
         case 'message':
