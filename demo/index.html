@@ -43,15 +43,26 @@ OTHER DEALINGS IN THE SOFTWARE.
     <style>
     /* GLOBAL */
     body {
-      background: #eee;
+      background: #efefef;
       font-family: "Ubuntu", sans-serif;
       font-weight: 300;
-      padding-bottom: 300px;
+    }
+    ::selection {
+      background: #030303;
+      color: #efefef;
+    }
+    ::-moz-selection {
+      background: #030303;
+      color: #efefef;
     }
     ::-webkit-scrollbar { 
       display: none; 
     }
+    a {
+      color: #CCC000;
+    }
     a:hover {
+      color: #999000;
       text-decoration: none;
     }
     h1, h2 {
@@ -80,6 +91,13 @@ OTHER DEALINGS IN THE SOFTWARE.
       font-size: 18px;
       line-height: 27px;
     }
+    input[type='text']{
+      border-radius: 0;
+      background: transparent;
+    }
+    input[type=text]:focus, textarea:focus {
+      box-shadow: 0 0 5px rgba(204, 192, 0, 1);
+    }
     .button {
       display: inline-block;
       border-radius: 0;
@@ -105,7 +123,7 @@ OTHER DEALINGS IN THE SOFTWARE.
     span.red {
       font: 18px;
       line-height: 24px;
-      background: #F55;
+      background: #F44;
       color: #efefef;
       font-weight: 300;
       border: none;
@@ -115,7 +133,7 @@ OTHER DEALINGS IN THE SOFTWARE.
     span.black {
       font: 18px;
       line-height: 24px;
-      background: #121212;
+      background: #030303;
       color: #efefef;
       font-weight: 300;
       border: none;
@@ -123,31 +141,35 @@ OTHER DEALINGS IN THE SOFTWARE.
       padding: 2px 5px 2px 5px;
     }
     /* navbar */    
-    .navbar.affix {
+    .navbar {
       width: 150px;
       height: 100%;
       padding: 100px 0 0 0;
       background: #030303;
+      position: fixed;
+      top: 0;
+      left: 0;
     }
-    .navbar.affix ul.nav.nav-list li a {
+    .navbar ul.nav.nav-list li a {
       color: #fff;
       text-shadow: none;
       text-transform: uppercase;
       font-size: 12px;
       opacity: 0.5;
     }
-    .navbar.affix ul.nav.nav-list li a i{
+    .navbar ul.nav.nav-list li a i{
       margin-right: 10px;
       margin-top: -1px;
     }
-    .navbar.affix ul.nav.nav-list li.active a {
+    .navbar ul.nav.nav-list li.active a {
       background: none;
       opacity: 0.95;
     }
-    .navbar.affix ul.nav.nav-list li a:hover {
+    .navbar ul.nav.nav-list li a:hover {
       background: none;
       opacity: 0.95;
     }
+    /* main page */
     .row {
       margin-bottom: 20px;
     }
@@ -191,11 +213,17 @@ OTHER DEALINGS IN THE SOFTWARE.
       padding: 0;
       text-align: center;
     }
+    .row .span12 h2 {
+      margin-bottom: 20px;
+    }
     #features {
-      color: #343434;
+      color: #333;
+    }
+    #features h5 {
+      margin-bottom: 20px;
     }
     #features h4 {
-      background: #343434;
+      background: #333;
       color: #efefef;
       margin: 0 60px 20px 0;
     }
@@ -208,28 +236,71 @@ OTHER DEALINGS IN THE SOFTWARE.
       min-height: 30px;
     }
     #learning {
-      color: #343434;
+      color: #333;
     }
     #learning h3{
-      background: #343434;
+      background: #333;
       color: #efefef;
       padding: 0 0 0 10px;
       margin: 30px 0 20px 0;
     }
+    #learning p {
+      margin-top: -15px;
+      padding-bottom: 15px;
+    }
     #usage {
-      color: #343434;
+      color: #333;
     }
     #faqs {
-      color: #343434;
+      color: #333;
     }
     #contact {
-      color: #343434;
+      background: #111;
+      color: #efefef;
       border-bottom: none;
+      padding-bottom: 600px;
+    }
+    #state_input {
+      border: none;
+      border-bottom: 1px solid #333;
+      width: 120px;
+      font-family: "Ubuntu", sans-serif;
+      font-size: 18px;
+      line-height: 24px;
+    }
+    #contact ul.dropdown-menu {
+      background: transparent;
+    }
+    #contact ul.dropdown-menu li.active a{
+      background: #ccc000;
+    }
+    /* custom class for autoplay message */
+    #autoplay_display.circle {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0,0,0,0.8);
+    }
+    #autoplay_display.circle .message {
+      width: 300px;
+      height: 300px;
+      position: absolute;
+      margin-left: -150px;
+      margin-top: -150px;
+      border-radius: 150px;
+      left: 50%;
+      top: 50%;
+      background: rgba(255,255,255,0.95);
+      font-size: 45px;
+      line-height: 300px;
+      color: #030303;
     }
     </style>
   </head>
   <body data-spy="scroll" data-target=".navbar">
-    <div class="navbar affix">
+    <div class="navbar">
       <ul class="nav nav-list">
         <li class="active"><a href="#home"><i class="icon-home icon-white"></i>Home</a></li>
         <li><a href="#features"><i class="icon-star icon-white"></i>Features</a></li>
@@ -251,7 +322,7 @@ OTHER DEALINGS IN THE SOFTWARE.
           </div>
           <div class="row">
             <div class="span12">
-              <a href="#features" class="button">How it works<i class="icon-circle-arrow-right icon-white"></i></a>
+              <a href="#features" id="feature_btn" class="button">How it works<i class="icon-circle-arrow-right icon-white"></i></a>
               <a href="https://github.com/xyfeng/autoplay" class="button">Source<i class="icon-download-alt icon-white"></i></a>
               <a href="" class="button color" id="start_btn"><span>try</span></a>
             </div>
@@ -337,7 +408,58 @@ OTHER DEALINGS IN THE SOFTWARE.
             <div class="span12">
               <h3>GoClick</h3>
               <h5><span class="red">goclick->#login_btn</span></h5>
-              <h5>move to the center of object <span class="black">#login_btn</span> and trigger click event</h5>
+              <h5>move cursor to the center of object <span class="black">#login_btn</span> and trigger click event</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span12">
+              <h3>Type</h3>
+              <h5><span class="red">type->#email_input->example@gmail.com</span></h5>
+              <h5>Fill input field <span class="black">#email_input</span> with content example@gmail.com.</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span12">
+              <h3>GoType</h3>
+              <h5><span class="red">gotype->#email_input->example@gmail.com</span></h5>
+              <h5>Move cursor to the center of input field <span class="black">#email_input</span> and filel with content example@gmail.com character by character.</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span12">
+              <h3>ScrollX</h3>
+              <h5><span class="red">scrollx->1000</span></h5>
+              <h5>Scroll window horizontally to offset position 1000 pixels.</h5>
+              <hr />
+              <h5><span class="red">scrollx->#features_list->1000</span></h5>
+              <h5>Scroll <span class="black">#features_list</span> horizontally to offset position 1000 pixels.</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span12">
+              <h3>ScrollY</h3>
+              <h5><span class="red">scrollx->1000</span></h5>
+              <h5>Scroll window vertically to offset position 1000 pixels.</h5>
+              <hr />
+              <h5><span class="red">scrollx->#features_list->1000</span></h5>
+              <h5>Scroll <span class="black">#features_list</span> vertically to offset position 1000 pixels.</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span12">
+              <h3>Message</h3>
+              <p>( Default classes: 'center' for an overlay of the whole window; 'bottom' for a overlay bar on bottom of the page. )</p>
+              <h5><span class="red">message->Scenario 1: Browse to a file.</span></h5>
+              <h5>Display message 'Scenario 1: Browse to a file.' in overlay style for 2000 milliseconds.</h5>
+              <hr />
+              <h5><span class="red">message->Scenario 1: Browse to a file.->3000</span></h5>
+              <h5>Display message 'Scenario 1: Browse to a file.' in overlay style for 3000 milliseconds</h5>
+              <hr />
+              <h5><span class="red">message->message_class->Scenario 1: Browse to a file.</span></h5>
+              <h5>Display message 'Scenario 1: Browse to a file.' in overlay style for 2000 milliseconds, use <span class="black">.message_class</span> for custom styling.</h5>
+              <hr />
+              <h5><span class="red">message->message_class->Scenario 1: Browse to a file.->3000</span></h5>
+              <h5>Display message 'Scenario 1: Browse to a file.' in overlay style for 3000 milliseconds, use <span class="black">.message_class</span> for custom styling.</h5>
             </div>
           </div>
         </div>
@@ -367,9 +489,16 @@ OTHER DEALINGS IN THE SOFTWARE.
               <h2>Contact</h2>
             </div>
           </div>
+          <div class="row">
+            <div class="span12">
+              <h5>Github: <a href="https://github.com/xyfeng/">xyfeng</a></h5>
+              <h5>Twitter: <a href="https://twitter.com/xy_feng">@xy_feng</a></h5>
+              <h5>Email: <a href="mailto:xy@xystudio.cc?Subject=Autoplay JS" target="_top">xy@xystudio.cc</a></h5>
+              <h5>Lives in: <input type="text" id="state_input" data-provide="typeahead" data-items="3" data-source="[&quot;Alabama&quot;,&quot;Alaska&quot;,&quot;Arizona&quot;,&quot;Arkansas&quot;,&quot;California&quot;,&quot;Colorado&quot;,&quot;Connecticut&quot;,&quot;Delaware&quot;,&quot;Florida&quot;,&quot;Georgia&quot;,&quot;Hawaii&quot;,&quot;Idaho&quot;,&quot;Illinois&quot;,&quot;Indiana&quot;,&quot;Iowa&quot;,&quot;Kansas&quot;,&quot;Kentucky&quot;,&quot;Louisiana&quot;,&quot;Maine&quot;,&quot;Maryland&quot;,&quot;Massachusetts&quot;,&quot;Michigan&quot;,&quot;Minnesota&quot;,&quot;Mississippi&quot;,&quot;Missouri&quot;,&quot;Montana&quot;,&quot;Nebraska&quot;,&quot;Nevada&quot;,&quot;New Hampshire&quot;,&quot;New Jersey&quot;,&quot;New Mexico&quot;,&quot;New York&quot;,&quot;North Dakota&quot;,&quot;North Carolina&quot;,&quot;Ohio&quot;,&quot;Oklahoma&quot;,&quot;Oregon&quot;,&quot;Pennsylvania&quot;,&quot;Rhode Island&quot;,&quot;South Carolina&quot;,&quot;South Dakota&quot;,&quot;Tennessee&quot;,&quot;Texas&quot;,&quot;Utah&quot;,&quot;Vermont&quot;,&quot;Virginia&quot;,&quot;Washington&quot;,&quot;West Virginia&quot;,&quot;Wisconsin&quot;,&quot;Wyoming&quot;]"></input></h5>
+            </div>
+          </div>
         </div>
       </section>
-
     </div>
     <!-- JAVASCRIPT -->
     <script src="js/jquery.js"></script>
@@ -386,31 +515,31 @@ OTHER DEALINGS IN THE SOFTWARE.
 
           // autoplay demo
           var script = [
-            // "wait->2000",
-            // "message->Autoplay Demo->3000",
-            // "move->118,268->500",
-            // "wait->2000",
-            // "goClick->.right.carousel-control",
-            // "wait->500",
-            // "click->.right.carousel-control",
-            // "wait->2000",
-            // "goType->#search_input input->new",
-            // "goClick->ul.typeahead.dropdown-menu li:nth-child(4) a",
-            // "wait->1000",
-            // "move->.container .row->480, 0",
-            // "wait->1000",
-            // "scrolly->400",
-            // "wait->1000",
-            // "scrollx->#heading_row->300",
-            // "wait->1000",
-            // "scrolly->1080",
-            // "wait->1000",
-            // "scrolly->2400",
-            // "wait->1000",
-            // "scrolly->0",
-            // "wait->1000",
-          ]
-          autoplay.initWithScript(script)
+            "scrolly->0",
+            "move->60,120",
+            "message->circle->DEMO",
+            "wait->1000",
+            "goclick->#feature_btn",
+            "wait->1000",
+            "move->690,612",
+            "move->900,612->2000",
+            "wait->2000",
+            "scrolly->2000",
+            "wait->2000",
+            "goclick->.navbar ul li:nth-child(6) a",
+            "wait->2000",
+            "goType->#state_input->New Y",
+            "goClick->ul.typeahead.dropdown-menu li:nth-child(1) a",
+            "wait->1000",
+            "message->End.",
+          ];
+          // autoplay.init();
+          autoplay.initWithScript(script);
+
+          $("#start_btn").on('click', function(e) {
+            e.preventDefault();
+            autoplay.loadScript(script);
+          });
         })
       }(window.jQuery)
     </script>

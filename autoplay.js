@@ -39,6 +39,7 @@ autoplay = {
     this.commandIndex = 0;
     this.commandLength = 0;
     this.addControls();
+    // console.log('autoplay script initiated!');
   },
   initWithScript: function(script) {
     this.init();
@@ -135,8 +136,8 @@ autoplay = {
       if( obj != null )
       {
         var $obj = $(obj);
-        left = $obj.offset().left + x;
-        top = $obj.offset().top + y;
+        left = $obj.offset().left + x - $('body').scrollLeft();
+        top = $obj.offset().top + y - $('body').scrollTop();
       }
       instance.cursor.animate({
         left: left,
@@ -166,13 +167,13 @@ autoplay = {
     };
     var typeObj = function(obj, value, callback){
       $(obj).focus();
-      instance.cursor.delay(300);
+      instance.cursor.delay(200);
       instance.cursor.queue(function() {
         $(obj).val(value).trigger('keyup');
         callback();
         return instance.cursor.dequeue();
       });
-      instance.cursor.delay(300);
+      instance.cursor.delay(200);
     };
     var scrollObj = function(obj, direction, value, callback){
       if( direction === 'y')
@@ -228,6 +229,7 @@ autoplay = {
         instance.commandIndex ++;
       }
       else{
+        instance.cursor.hide();
         return;
       }
       var parameters = line.split('->');
@@ -242,6 +244,7 @@ autoplay = {
           decodeCommand();
           break;
         case 'move':
+          instance.cursor.show();
           var obj = null;
           var x = 0;
           var y = 0;
@@ -282,6 +285,7 @@ autoplay = {
           }
           break;
         case 'hover':
+          instance.cursor.show();
           var obj = parameters[1];
           if( checkObj(obj, line) )
           {
@@ -292,9 +296,11 @@ autoplay = {
           }
           break;
         case 'wait':
+          instance.cursor.show();
           waitForMilliseconds(parseInt(parameters[1], 10), decodeCommand);
           break;
         case 'click':
+          instance.cursor.show();
           var obj = parameters[1];
           if( checkObj(obj, line) )
           {
@@ -305,6 +311,7 @@ autoplay = {
           }
           break;
         case 'type':
+          instance.cursor.show();
           var obj = parameters[1];
           if( checkObj(obj, line) )
           {
@@ -315,6 +322,7 @@ autoplay = {
           }
           break;
         case 'scrollx':
+          instance.cursor.show();
           var parameter = parameters[1];
           if( parameters.length === 2 )
           {
@@ -332,6 +340,7 @@ autoplay = {
           }
           break;
         case 'scrolly':
+          instance.cursor.show();
           var parameter = parameters[1];
           if( parameters.length === 2 )
           {
