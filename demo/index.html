@@ -27,265 +27,363 @@ OTHER DEALINGS IN THE SOFTWARE.
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Autoplay - a jquery plugin by XY Feng</title>
     <meta charset="utf-8">
-    <title>Autoplay Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="xystudio.cc">
+    <meta name="description" content="Autoplay - a jquery plugin by XY Feng">
     <meta name="author" content="XY Feng">
-    <!-- Le styles -->
+    <meta property="og:title" content="autoplay">
+    <meta property="og:description" content="Autoplay - a jquery plugin by XY Feng">
+    <meta property="og:url" content="http://xyfeng.github.io/autoplay">
+    <meta property="og:site_name" content="xyfeng.github.io/autoplay" />    
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="../autoplay.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:600,700' rel='stylesheet' type='text/css'>
     <style>
-    /* GLOBAL STYLES
-    -------------------------------------------------- */
-    /* Padding below the footer and lighter body text */
+    /* GLOBAL */
     body {
-      padding-bottom: 40px;
-      color: #5a5a5a;
+      background: #eee;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 300;
+      padding-bottom: 300px;
     }
     ::-webkit-scrollbar { 
       display: none; 
     }
-    .btn.btn-large.btn-inverse {
+    a:hover {
+      text-decoration: none;
+    }
+    h1, h2 {
+      font-family: "Open Sans", Arial;
+      letter-spacing: 1px;
+    }
+    h3, h4, h5 {
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+    h1 {
+      font-weight: 600;
+      font-size: 96px;
+      line-height: 112px;
+    }
+    h2 {
+      font-size: 60px;
+      line-height: 72px;
+      font-weight: 700;
+    }
+    h4 {
+      font-size: 24px;
+      line-height: 32px;
+    }
+    h5 {
+      font-size: 18px;
+      line-height: 27px;
+    }
+    .button {
+      display: inline-block;
       border-radius: 0;
-      -webkit-box-shadow: none;
-      -moz-box-shadow: none;
-      box-shadow: none;
+      text-transform: uppercase;
+      padding: 12px 20px 12px 20px;
+      background: #555;
+      color: #efefef;
+      margin-right: 30px;
     }
-    /* CUSTOMIZE THE NAVBAR
-    -------------------------------------------------- */
-    /* Special class on .container surrounding .navbar, used for positioning it into place. */
-    .navbar-wrapper {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 10;
-      margin-top: 20px;
-      margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+    .button i {
+      margin: 0 0 0 10px;
     }
-    /* Remove border and change up box shadow for more contrast */
-    .navbar .navbar-inner {
-      border: 0;
-      border-radius: 0;
+    .button:hover {
+      color: #efefef;
+      background: #333;
     }
-    /* Downsize the brand/project name a bit */
-    .navbar .brand {
-      padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
-      font-size: 16px;
-      font-weight: bold;
-      text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+    .button.color {
+      background: #CCC000;
     }
-    #search_input {
-      margin-top: 10px;
-      margin-left: 775px;
+    .button.color:hover {
+      background: #999000 !important;
     }
-    #search_input input {
-      border-radius: 0;
-    }
-    #search_input ul {
-      border-radius: 0;
-    }
-    /* CUSTOMIZE THE CAROUSEL
-    -------------------------------------------------- */
-    /* Carousel base class */
-    .carousel {
-      margin-bottom: 60px;
-    }
-    .carousel .container {
-      position: relative;
-      z-index: 9;
-    }
-    .carousel-control {
-      height: 80px;
-      margin-top: 0;
-      font-size: 120px;
-      text-shadow: 0 1px 1px rgba(0,0,0,.4);
-      background-color: transparent;
-      border: 0;
-      z-index: 10;
-    }
-    .carousel .item {
-      height: 800px;
-    }
-    .carousel img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      min-width: 100%;
-      height: 800px;
-    }
-    .carousel-caption {
-      background-color: transparent;
-      position: static;
-      max-width: 550px;
-      padding: 0;
-      margin: 240px 0 0 0;
-    }
-    .carousel-caption h1,
-    .carousel-caption .lead {
-      margin: 0 0 20px 0;
-      line-height: 1.25;
-      color: #fff;
-      text-shadow: 0 1px 1px rgba(0,0,0,.4);
-    }
-    .carousel-caption .btn {
-      margin-top: 10px;
-    }
-    /* HORIZONTAL BAR
-    -------------------------------------------------- */
-    /* Center align the text within the three columns below the carousel */
-    .container .row {
-      margin: 0;
-      overflow-x: scroll;
-    }
-    .container .row::-webkit-scrollbar { 
-      display: none; 
-    }
-    #all_colors {
-      width: 1500px;
-      height: 400px;
-    }
-    .color-bar{
-      width: 150px;
-      height: 400px;
-      float: left;
-    }
-    /* Featurettes
-    ------------------------- */
-    .featurette-divider {
-      margin: 80px 0; /* Space out the Bootstrap <hr> more */
-    }
-    .featurette {
-      padding-top: 120px; /* Vertically center images part 1: add padding above and below text. */
-      overflow: hidden; /* Vertically center images part 2: clear their floats. */
-    }
-    .featurette-image {
-      margin-top: -120px; /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
-    }
-    /* Give some space on the sides of the floated elements so text doesn't run right into it. */
-    .featurette-image.pull-left {
-      margin-right: 40px;
-    }
-    .featurette-image.pull-right {
-      margin-left: 40px;
-    }
-    /* Thin out the marketing headings */
-    .featurette-heading {
-      font-size: 50px;
+    span.red {
+      font: 18px;
+      line-height: 24px;
+      background: #F55;
+      color: #efefef;
       font-weight: 300;
-      line-height: 1;
-      letter-spacing: -1px;
+      border: none;
+      border-radius: 0;
+      padding: 2px 5px 2px 5px;
+    }
+    span.black {
+      font: 18px;
+      line-height: 24px;
+      background: #121212;
+      color: #efefef;
+      font-weight: 300;
+      border: none;
+      border-radius: 0;
+      padding: 2px 5px 2px 5px;
+    }
+    /* navbar */    
+    .navbar.affix {
+      width: 150px;
+      height: 100%;
+      padding: 100px 0 0 0;
+      background: #030303;
+    }
+    .navbar.affix ul.nav.nav-list li a {
+      color: #fff;
+      text-shadow: none;
+      text-transform: uppercase;
+      font-size: 12px;
+      opacity: 0.5;
+    }
+    .navbar.affix ul.nav.nav-list li a i{
+      margin-right: 10px;
+      margin-top: -1px;
+    }
+    .navbar.affix ul.nav.nav-list li.active a {
+      background: none;
+      opacity: 0.95;
+    }
+    .navbar.affix ul.nav.nav-list li a:hover {
+      background: none;
+      opacity: 0.95;
+    }
+    .row {
+      margin-bottom: 20px;
+    }
+    .container {
+      width: 100%;
+    }
+    .container section {
+      margin-left: 150px;
+      min-height: 400px;
+      color: #efefef;
+      border-bottom: 1px solid #cdcdcd;
+      padding: 120px 60px 120px 60px;
+    }
+    #home {
+      background-color: #121212;
+      background-image: linear-gradient(90deg, rgba(10,10,10,.07) 50%, transparent 50%),
+      linear-gradient(90deg, rgba(10,10,10,.13) 50%, transparent 50%),
+      linear-gradient(90deg, transparent 50%, rgba(10,10,10,.17) 50%),
+      linear-gradient(90deg, transparent 50%, rgba(10,10,10,.19) 50%);
+      background-size: 13px, 29px, 37px, 53px;
+      padding-top: 180px;
+      min-height: 720px;
+      color: #efefef;
+    }
+    #home h5 {
+      color: #333;
+    }
+    #home h5 a {
+      color: #333;
+    }
+    #home h5 a:hover {
+      color: #555;
+    }
+    #start_btn {
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      border-radius: 30px;
+      background: #ccc000;
+      line-height: 60px;
+      padding: 0;
+      text-align: center;
+    }
+    #features {
+      color: #343434;
+    }
+    #features h4 {
+      background: #343434;
+      color: #efefef;
+      margin: 0 60px 20px 0;
+    }
+    #features h4 i{
+      margin: 6px 9px 0 5px;
+    }
+    #features .span6 p {
+      margin: -10px 60px 30px 28px;
+      line-height: 18px;
+      min-height: 30px;
+    }
+    #learning {
+      color: #343434;
+    }
+    #learning h3{
+      background: #343434;
+      color: #efefef;
+      padding: 0 0 0 10px;
+      margin: 30px 0 20px 0;
+    }
+    #usage {
+      color: #343434;
+    }
+    #faqs {
+      color: #343434;
+    }
+    #contact {
+      color: #343434;
+      border-bottom: none;
     }
     </style>
   </head>
-  <body>
-    <!-- NAVBAR
-    ================================================== -->
-    <div class="navbar-wrapper">
-      <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-          <div class="container">
-            <a class="brand" href="#">Autoplay</a>
-            <div id='search_input'>
-              <input class="input-medium" id="appendedInputButton" type="text" placeholder="where?" data-provide="typeahead" data-source='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]' data-items="4">
-            </div>
-          </div> <!-- /.container -->
-        </div><!-- /.navbar-inner -->
-      </div><!-- /.navbar -->
-    </div><!-- /.navbar-wrapper -->
-
-    <!-- Carousel
-    ================================================== -->
-    <div id="myCarousel" class="carousel slide">
-      <div class="carousel-inner">
-        <div class="item active">
-          <img src="img/slide-01.jpg" alt="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>If you are a creative director</h1>
-              <p class="lead">After build an awesome web experience, looking for a new way to show the client how everything works, why not just let them watch it 'dance'</p>
-              <a class="btn btn-large btn-inverse" href="#">Cool</a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <img src="img/slide-02.jpg" alt="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>If you are a designer</h1>
-              <p class="lead">Want to control the userflow in perfect details and timing without hug the developers, now you can learn 10 commands and write your own script.</p>
-              <a class="btn btn-large btn-inverse" href="#">Really</a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <img src="img/slide-03.jpg" alt="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>If you are a developer</h1>
-              <p class="lead">Tired of showing your web magic tricks, add autoplay and let the designers play</p>
-              <a class="btn btn-large btn-inverse" href="#">Got it</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
-    </div><!-- /.carousel -->
-
-    <!-- Horizontal Bar
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
+  <body data-spy="scroll" data-target=".navbar">
+    <div class="navbar affix">
+      <ul class="nav nav-list">
+        <li class="active"><a href="#home"><i class="icon-home icon-white"></i>Home</a></li>
+        <li><a href="#features"><i class="icon-star icon-white"></i>Features</a></li>
+        <li><a href="#learning"><i class="icon-pencil icon-white"></i>Learning</a></li>
+        <li><a href="#usage"><i class="icon-wrench icon-white"></i>Usage</a></li>
+        <li><a href="#faqs"><i class="icon-list icon-white"></i>FAQs</a></li>
+        <li><a href="#contact"><i class="icon-envelope icon-white"></i>Contact</a></li>
+      </ul>
+    </div>
     <div class="container">
-      <div class="row">
-        <div id="all_colors">
-          <div class="color-bar" style="background:#EEE"></div>
-          <div class="color-bar" style="background:#DDD"></div>
-          <div class="color-bar" style="background:#CCC"></div>
-          <div class="color-bar" style="background:#BBB"></div>
-          <div class="color-bar" style="background:#AAA"></div>
-          <div class="color-bar" style="background:#999"></div>
-          <div class="color-bar" style="background:#888"></div>
-          <div class="color-bar" style="background:#777"></div>
-          <div class="color-bar" style="background:#666"></div>
-          <div class="color-bar" style="background:#555"></div>
+      <section id="home">
+        <div class="container">
+          <div class="row">
+            <div class="span12">
+              <h1>Autoplay</h1>
+              <h3>A jQuery plugin to automate user scenarios</h3>
+              <h5>By <a href="http://xystudio.cc">XY Feng</a></h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span12">
+              <a href="#features" class="button">How it works<i class="icon-circle-arrow-right icon-white"></i></a>
+              <a href="https://github.com/xyfeng/autoplay" class="button">Source<i class="icon-download-alt icon-white"></i></a>
+              <a href="" class="button color" id="start_btn"><span>try</span></a>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
+      <section id="features">
+        <div class="container">
+          <div class="row">
+            <div class="span12">
+              <h2>Features</h2>
+              <h5>Autoplay reads in pre-scripted language line by line, and translate them into 'commands', which controls a simulated cursor moving around screen, typing into input fields, sometime to display messages.</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span6">
+              <h4><i class="icon-certificate icon-white"></i>Move cursor around</h4>
+              <p>Cursor can be move to any position on screen, or move to a center of an object in any speed.</p>
+              <h4><i class="icon-certificate icon-white"></i>Trigger click event</h4>
+              <p>Simulate mouse click event on any given object.</p>
+              <h4><i class="icon-certificate icon-white"></i>Type into input fields</h4>
+              <p>Simulate type in input or textarea, character by character.</p>
+              <h4><i class="icon-certificate icon-white"></i>Speed Exit</h4>
+              <p>User still have full control of the mouse cursor, click mouse in everywhere on the page to exit the autoplay mode.</p>
+            </div>
+            <div class="span6">
+              <h4><i class="icon-certificate icon-white"></i>Scroll pages</h4>
+              <p>Scroll page or any given object, supporting both vertical and horizontal direction.</p>
+              <h4><i class="icon-certificate icon-white"></i>Display message</h4>
+              <p>Display an overlay message and pause the cursor, resume the cursor once the message fade out, fully customizable message layout.</p>
+              <h4><i class="icon-certificate icon-white"></i>Pause/Resume</h4>
+              <p>Press space bar to pause or resume the running script.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="learning">
+        <div class="container">
+          <div class="row">
+            <div class="span12">
+              <h2>Learning</h2>
+              <h5>Write in a special formatted scripting language inside javascript. Each line is composed with <span class="red">command->object->parameters->duration</span> ( NO space before or after <span class="red">-></span> )</h5>
+              <h5>Object is a string, uses <a href="http://api.jquery.com/category/selectors/">jQuery selector</a>, example: <span class="black">#navbar li:first-child a</span></h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span12">
+              <h3>Wait</h3>
+              <h5><span class="red">wait->3000</span></h5>
+              <h5>let the cursor stay at its location for 3000 milliseconds.</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span12">
+              <h3>Move</h3>
+              <h5><span class="red">move->#feature_box</span></h5>
+              <h5>move cursor to the center of object <span class="black">#feature_box</span> in default speed.</h5>
+              <hr />
+              <h5><span class="red">move->#feature_box->3000</span></h5>
+              <h5>move cursor to the center of object <span class="black">#feature_box</span> in 3000 milliseconds.</h5>
+              <hr />
+              <h5><span class="red">move->#feature_box->300,200</span></h5>
+              <h5>move cursor to object <span class="black">#feature_box</span>, offset (300px,200px) from the top-left corner of <span class="black">#feature_box</span> in default speed.</h5>
+              <hr />
+              <h5><span class="red">move->#feature_box->300,200->3000</span></h5>
+              <h5>move cursor to object <span class="black">#feature_box</span>, offset (300px,200px) from the top-left corner of <span class="black">#feature_box</span> in 3000 milliseconds.</h5>
+              <hr />
+              <h5><span class="red">move->300,200</span></h5>
+              <h5>move cursor to position (300px,200px), offset from the top-left corner of the window in default speed.</span></h5>
+              <hr />
+              <h5><span class="red">move->300,200->3000</span></h5>
+              <h5>move cursor to position (300px,200px), offset from the top-left corner of the window in 3000 milliseconds.</span></h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span12">
+              <h3>Click</h3>
+              <h5><span class="red">click->#login_btn</span></h5>
+              <h5>trigger click event on object <span class="black">#login_btn</span></h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span12">
+              <h3>GoClick</h3>
+              <h5><span class="red">goclick->#login_btn</span></h5>
+              <h5>move to the center of object <span class="black">#login_btn</span> and trigger click event</h5>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="usage">
+        <div class="container">
+          <div class="row">
+            <div class="span12">
+              <h2>Usage</h2>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="faqs">
+        <div class="container">
+          <div class="row">
+            <div class="span12">
+              <h2>FAQs</h2>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="contact">
+        <div class="container">
+          <div class="row">
+            <div class="span12">
+              <h2>Contact</h2>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <!-- START THE FEATURETTES -->
-      <hr class="featurette-divider">
-      <div class="featurette">
-        <h2 class="featurette-heading">First featurette headling. <span class="muted">It'll blow your mind.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-      <hr class="featurette-divider">
-      <div class="featurette">
-        <h2 class="featurette-heading">Oh yeah, it's that good. <span class="muted">See for yourself.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-      <hr class="featurette-divider">
-      <div class="featurette">
-        <h2 class="featurette-heading">And lastly, this one. <span class="muted">Checkmate.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-      <hr class="featurette-divider">
-      <!-- FOOTER -->
-      <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2013  &middot; <a href="http://xystudio.cc/">xystudio.cc</a></p>
-      </footer>
-    </div><!-- /.container -->
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+    </div>
+    <!-- JAVASCRIPT -->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="../autoplay.js"></script>
     <script>
       !function ($) {
         $(function(){
+          //scoll animation
+          $("body a[href^='#']").on('click', function(e) {
+             e.preventDefault();
+             $('html, body').animate({ scrollTop: $(this.hash).offset().top }, 300);
+          });
+
           // autoplay demo
           var script = [
             // "wait->2000",
