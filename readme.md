@@ -29,52 +29,71 @@ Here is the format: **command->object->parameters->duration**
 *object* is [jQuery selector](http://api.jquery.com/category/selectors/) string, for example: **#navbar li:first-child a**
 
 #####Wait
-`wait->3000` let the cursor stay at its location for 3000 milliseconds.
+	wait->3000 
+	[Let the cursor stay at its location for 3000 milliseconds.]
 #####Move
-`move->#feature_box` move cursor to the center of object #feature_box in default speed.
+	move->#feature_box
+	[Move cursor to the center of object #feature_box in default speed.]
 
-`move->#feature_box->3000` move cursor to the center of object #feature_box in 3000 milliseconds.
+	move->#feature_box->3000
+	[Move cursor to the center of object #feature_box in 3000 milliseconds.]
 
-`move->#feature_box->300,200` move cursor to object #feature_box, offset (300px,200px) from the top-left corner of #feature_box in default speed.
+	move->#feature_box->300,200
+	[Move cursor to object #feature_box, offset (300px,200px) from the top-left corner of #feature_box in default speed.]
 
-`move->#feature_box->300,200->3000` move cursor to object #feature_box, offset (300px,200px) from the top-left corner of #feature_box in 3000 milliseconds.
+	move->#feature_box->300,200->3000 
+	[Move cursor to object #feature_box, offset (300px,200px) from the top-left corner of #feature_box in 3000 milliseconds.]
 
-`move->300,200` move cursor to position (300px,200px), offset from the top-left corner of the window in default speed.
+	move->300,200 	
+	[Move cursor to position (300px,200px), offset from the top-left corner of the window in default speed.]
 
-`move->300,200->3000` move cursor to position (300px,200px), offset from the top-left corner of the window in 3000 milliseconds.
+	move->300,200->3000 
+	[Move cursor to position (300px,200px), offset from the top-left corner of the window in 3000 milliseconds.]
 
 #####Click
-`click->#login_btn` trigger click event on object #login_btn
+	click->#login_btn
+	[Trigger click event on object #login_btn]
 
 #####GoClick
-`goclick->#login_btn` move cursor to the center of object #login_btn and trigger click event.
+	goclick->#login_btn
+	[Move cursor to the center of object #login_btn and trigger click event.]
 
 #####Type
-`type->#email_input->example@gmail.com` Type inside #email_input with word: example@gmail.com.
+	type->#email_input->example@gmail.com
+	[Type inside #email_input with word: example@gmail.com.]
 
 #####GoType
-`gotype->#email_input->example@gmail.com` Move cursor to the center of #email_input and type out example@gmail.com character by character.
+	gotype->#email_input->example@gmail.com 
+	[Move cursor to the center of #email_input and type out example@gmail.com character by character.]
 
 #####ScrollX
-`scrollx->1000` Scroll window horizontally, offsetting its left position to 1000 pixels.
+	scrollx->1000 
+	[Scroll window horizontally, offsetting its left position to 1000 pixels.]
 
-`scrollx->#features_list->1000` Scroll #features_list horizontally, offsetting its left position to 1000 pixels.
+	scrollx->#features_list->1000 
+	[Scroll #features_list horizontally, offsetting its left position to 1000 pixels.]
 
 #####ScrollY
-`scrolly->1000` Scroll window vertically, offsetting its top position to 1000 pixels.
+	scrolly->1000 
+	[Scroll window vertically, offsetting its top position to 1000 pixels.]
 
-`scrolly->#features_list->1000` Scroll #features_list vertically, offsetting its top position to 1000 pixels.
+	scrolly->#features_list->1000
+	[Scroll #features_list vertically, offsetting its top position to 1000 pixels.]
 
 #####Display
 Use default class 'center' for a centered message on a screen overlay; use default class 'bottom' for a centered message on a bottom-overlay bar.
 
-`display->Scenario 1: Browse to a file.` Display message 'Scenario 1: Browse to a file.' in a screen overlay for 2000 milliseconds.
+	display->Scenario 1: Browse to a file.
+	[Display message 'Scenario 1: Browse to a file.' in a screen overlay for 2000 milliseconds.]
 
-`display->Scenario 1: Browse to a file.->3000` Display message 'Scenario 1: Browse to a file.' in a screen overlay for 3000 milliseconds.
+	display->Scenario 1: Browse to a file.->3000 
+	[Display message 'Scenario 1: Browse to a file.' in a screen overlay for 3000 milliseconds.]
 
-`display->message_class->Scenario 1: Browse to a file.` Display message 'Scenario 1: Browse to a file.' in a customized overlay .message_class for 2000 milliseconds.
+	display->message_class->Scenario 1: Browse to a file.
+	[Display message 'Scenario 1: Browse to a file.' in a customized overlay .message_class for 2000 milliseconds.]
 
-`display->message_class->Scenario 1: Browse to a file.->3000` Display message 'Scenario 1: Browse to a file.' in a customized overlay .message_class for 3000 milliseconds.
+	display->message_class->Scenario 1: Browse to a file.->3000
+	[Display message 'Scenario 1: Browse to a file.' in a customized overlay .message_class for 3000 milliseconds.]
 
 ###Usage
 #####Add Autoplay
