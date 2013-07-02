@@ -342,9 +342,9 @@ OTHER DEALINGS IN THE SOFTWARE.
   <body data-spy="scroll" data-target=".navbar">
     <div class="navbar">
       <ul class="nav nav-list">
-        <li class="active"><a href="#home"><i class="icon-home icon-white"></i>Home</a></li>
+        <li class="active"><a href="#home" id="home_btn"><i class="icon-home icon-white"></i>Home</a></li>
         <li><a href="#features"><i class="icon-star icon-white"></i>Features</a></li>
-        <li><a href="#learning"><i class="icon-pencil icon-white"></i>Learning</a></li>
+        <li><a href="#learning" id="learning_btn"><i class="icon-pencil icon-white"></i>Learning</a></li>
         <li><a href="#usage"><i class="icon-wrench icon-white"></i>Usage</a></li>
         <li><a href="#faqs"><i class="icon-list icon-white"></i>FAQs</a></li>
         <li><a href="#contact"><i class="icon-envelope icon-white"></i>Contact</a></li>
@@ -618,15 +618,17 @@ OTHER DEALINGS IN THE SOFTWARE.
           var script = [
             "display->circle->DEMO",
             "move->60,120",
-            "wait->1500",
-            "goclick->#feature_btn",
+            "click->#home_btn",
             "wait->500",
-            "scrolly->1320",
+            "goclick->#feature_btn",
             "wait->1500",
-            "move->610,338",
-            "move->846,338->1000",
+            "goclick->#learning_btn",
             "wait->1500",
-            "scrolly->2000",
+            "move->640,200",
+            "wait->500",
+            "scrolly->2400",
+            "wait->1000",
+            "scrolly->3200",
             "wait->1500",
             "goclick->.navbar ul li:nth-child(6) a",
             "wait->1500",
