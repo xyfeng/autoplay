@@ -35,9 +35,6 @@ autoplay = {
       top: -16
     });
     this.animationDuration = 600;
-    this.commandArr = [];
-    this.commandIndex = 0;
-    this.commandLength = 0;
     this.addControls();
     // console.log('autoplay script initiated!');
   },
@@ -68,12 +65,18 @@ autoplay = {
     $('body').on('mousedown', function(){
       instance.message.hide();
       instance.cursor.queue("fx", []);
-      instance.cursor.stop().hide();
+      instance.cursor.stop().hide().css({
+        left: -16,
+        top: -16
+      });
       instance.commandIndex = instance.commandLength;
     });
   },
   loadScript: function(script) {
     //build commands 
+    this.commandArr = [];
+    this.commandIndex = 0;
+    this.commandLength = 0;
     for(var i = 0; i < script.length; i++)
     {
       var parameters = script[i].split('->');
@@ -229,7 +232,10 @@ autoplay = {
         instance.commandIndex ++;
       }
       else{
-        instance.cursor.hide();
+        instance.cursor.hide().css({
+          left: -16,
+          top: -16
+        });
         return;
       }
       var parameters = line.split('->');
@@ -357,7 +363,7 @@ autoplay = {
             }
           }
           break;
-        case 'message':
+        case 'display':
           var message = '';
           var msgClass = 'center';
           var duration = 2000;

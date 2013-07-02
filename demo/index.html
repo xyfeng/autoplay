@@ -65,11 +65,14 @@ OTHER DEALINGS IN THE SOFTWARE.
       color: #999000;
       text-decoration: none;
     }
+    p {
+      font-size: 15px;
+    }
     h1, h2 {
       font-family: "Open Sans", Arial;
       letter-spacing: 1px;
     }
-    h3, h4, h5 {
+    h3, h4 {
       font-weight: 500;
       letter-spacing: 1px;
     }
@@ -83,11 +86,11 @@ OTHER DEALINGS IN THE SOFTWARE.
       line-height: 72px;
       font-weight: 700;
     }
-    h4 {
-      font-size: 24px;
+    h3 {
+      font-size: 21px;
       line-height: 32px;
     }
-    h5 {
+    h4 {
       font-size: 18px;
       line-height: 27px;
     }
@@ -97,6 +100,17 @@ OTHER DEALINGS IN THE SOFTWARE.
     }
     input[type=text]:focus, textarea:focus {
       box-shadow: 0 0 5px rgba(204, 192, 0, 1);
+    }
+    code {
+      display: block;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      font-size: 15px;
+      line-height: 21px;
+      padding: 10px 20px 10px 20px;
+      border-left: 6px solid #F44;
+      margin-left: 10px;
     }
     .button {
       display: inline-block;
@@ -128,7 +142,7 @@ OTHER DEALINGS IN THE SOFTWARE.
       font-weight: 300;
       border: none;
       border-radius: 0;
-      padding: 2px 5px 2px 5px;
+      padding: 2px 6px 2px 6px;
     }
     span.black {
       font: 18px;
@@ -138,7 +152,7 @@ OTHER DEALINGS IN THE SOFTWARE.
       font-weight: 300;
       border: none;
       border-radius: 0;
-      padding: 2px 5px 2px 5px;
+      padding: 2px 6px 2px 6px;
     }
     /* navbar */    
     .navbar {
@@ -194,13 +208,13 @@ OTHER DEALINGS IN THE SOFTWARE.
       min-height: 720px;
       color: #efefef;
     }
-    #home h5 {
+    #home h4 {
       color: #333;
     }
-    #home h5 a {
+    #home h4 a {
       color: #333;
     }
-    #home h5 a:hover {
+    #home h4 a:hover {
       color: #555;
     }
     #start_btn {
@@ -213,24 +227,24 @@ OTHER DEALINGS IN THE SOFTWARE.
       padding: 0;
       text-align: center;
     }
-    .row .span12 h2 {
+    .row .span10 h2 {
       margin-bottom: 20px;
     }
     #features {
       color: #333;
     }
-    #features h5 {
+    #features h4 {
       margin-bottom: 20px;
     }
-    #features h4 {
+    #features h3 {
       background: #333;
       color: #efefef;
       margin: 0 60px 20px 0;
     }
-    #features h4 i{
+    #features h3 i{
       margin: 6px 9px 0 5px;
     }
-    #features .span6 p {
+    #features .span5 p {
       margin: -10px 60px 30px 28px;
       line-height: 18px;
       min-height: 30px;
@@ -244,15 +258,41 @@ OTHER DEALINGS IN THE SOFTWARE.
       padding: 0 0 0 10px;
       margin: 30px 0 20px 0;
     }
-    #learning p {
-      margin-top: -15px;
-      padding-bottom: 15px;
+    #learning code {
+      font-size: 18px;
+      line-height: 24px;
+      padding: 0 0 0 6px;
+      margin-left: 0;
+    }
+    #learning a {
+      text-decoration: underline;
     }
     #usage {
       color: #333;
     }
+    #usage h3{
+      background: #333;
+      color: #efefef;
+      padding: 0 0 0 10px;
+      margin: 30px 0 20px 0;
+    }
+    #usage h4{
+      margin-left: 10px;
+    }
     #faqs {
       color: #333;
+    }
+    #faqs h3{
+      background: #333;
+      color: #efefef;
+      padding: 0 0 0 10px;
+      margin: 30px 0 20px 0;
+    }
+    #faqs h3 i{
+      margin: 6px 9px 0 5px;
+    }
+    #faqs h4 {
+      margin-left: 38px;
     }
     #contact {
       background: #111;
@@ -314,14 +354,14 @@ OTHER DEALINGS IN THE SOFTWARE.
       <section id="home">
         <div class="container">
           <div class="row">
-            <div class="span12">
+            <div class="span10">
               <h1>Autoplay</h1>
               <h3>A jQuery plugin to automate user scenarios</h3>
-              <h5>By <a href="http://xystudio.cc">XY Feng</a></h5>
+              <h4>By <a href="http://xystudio.cc">XY Feng</a></h4>
             </div>
           </div>
           <div class="row">
-            <div class="span12">
+            <div class="span10">
               <a href="#features" id="feature_btn" class="button">How it works<i class="icon-circle-arrow-right icon-white"></i></a>
               <a href="https://github.com/xyfeng/autoplay" class="button">Source<i class="icon-download-alt icon-white"></i></a>
               <a href="" class="button color" id="start_btn"><span>try</span></a>
@@ -332,28 +372,28 @@ OTHER DEALINGS IN THE SOFTWARE.
       <section id="features">
         <div class="container">
           <div class="row">
-            <div class="span12">
+            <div class="span10">
               <h2>Features</h2>
-              <h5>Autoplay reads in pre-scripted language line by line, and translate them into 'commands', which controls a simulated cursor moving around screen, typing into input fields, sometime to display messages.</h5>
+              <h4><span class="black">Autoplay</span> reads in user scripted 'commands' line by line. By excuting each 'command', it controls a simulated cursor moving around, typing into input fields, and displaying overlay messages.</h4>
             </div>
           </div>
           <div class="row">
-            <div class="span6">
-              <h4><i class="icon-certificate icon-white"></i>Move cursor around</h4>
-              <p>Cursor can be move to any position on screen, or move to a center of an object in any speed.</p>
-              <h4><i class="icon-certificate icon-white"></i>Trigger click event</h4>
-              <p>Simulate mouse click event on any given object.</p>
-              <h4><i class="icon-certificate icon-white"></i>Type into input fields</h4>
-              <p>Simulate type in input or textarea, character by character.</p>
-              <h4><i class="icon-certificate icon-white"></i>Speed Exit</h4>
-              <p>User still have full control of the mouse cursor, click mouse in everywhere on the page to exit the autoplay mode.</p>
+            <div class="span5">
+              <h3><i class="icon-certificate icon-white"></i>Move cursor around</h3>
+              <p>Cursor can be moved to any given position on screen, or moved to the center of an object in any speed.</p>
+              <h3><i class="icon-certificate icon-white"></i>Trigger click event</h3>
+              <p>Trigger mouse click event on any given object.</p>
+              <h3><i class="icon-certificate icon-white"></i>Type into text field</h3>
+              <p>Simulate typing inside input or textarea, character by character.</p>
+              <h3><i class="icon-certificate icon-white"></i>Quick Exit</h3>
+              <p>User has full control of the mouse cursor all the time, click mouse in everywhere on the page will exit the autoplay mode.</p>
             </div>
-            <div class="span6">
-              <h4><i class="icon-certificate icon-white"></i>Scroll pages</h4>
-              <p>Scroll page or any given object, supporting both vertical and horizontal direction.</p>
-              <h4><i class="icon-certificate icon-white"></i>Display message</h4>
-              <p>Display an overlay message and pause the cursor, resume the cursor once the message fade out, fully customizable message layout.</p>
-              <h4><i class="icon-certificate icon-white"></i>Pause/Resume</h4>
+            <div class="span5">
+              <h3><i class="icon-certificate icon-white"></i>Scroll page</h3>
+              <p>Scroll page or scroll any given object, supporting both horizontal and vertical direction.</p>
+              <h3><i class="icon-certificate icon-white"></i>Display message</h3>
+              <p>Display an overlay message with FADE transition, message style is fully customizable.</p>
+              <h3><i class="icon-certificate icon-white"></i>Pause and Resume</h3>
               <p>Press space bar to pause or resume the running script.</p>
             </div>
           </div>
@@ -362,104 +402,103 @@ OTHER DEALINGS IN THE SOFTWARE.
       <section id="learning">
         <div class="container">
           <div class="row">
-            <div class="span12">
+            <div class="span10">
               <h2>Learning</h2>
-              <h5>Write in a special formatted scripting language inside javascript. Each line is composed with <span class="red">command->object->parameters->duration</span> ( NO space before or after <span class="red">-></span> )</h5>
-              <h5>Object is a string, uses <a href="http://api.jquery.com/category/selectors/">jQuery selector</a>, example: <span class="black">#navbar li:first-child a</span></h5>
+              <h4>Ready to learn some 'command'?<br>Here is the format: <span class="red">command->object->parameters->duration</span><br>'object' is <span class="black"><a href="http://api.jquery.com/category/selectors/">jQuery selector</a></span> string, for example: <span class="black">#navbar li:first-child a</span></h4>
             </div>
           </div>
           <div class="row">
-            <div class="span12">
+            <div class="span10">
               <h3>Wait</h3>
-              <h5><span class="red">wait->3000</span></h5>
-              <h5>let the cursor stay at its location for 3000 milliseconds.</h5>
+              <code>wait->3000</code>
+              <h4>let the cursor stay at its location for 3000 milliseconds.</h4>
             </div>
           </div>
           <div class="row">
-            <div class="span12">
+            <div class="span10">
               <h3>Move</h3>
-              <h5><span class="red">move->#feature_box</span></h5>
-              <h5>move cursor to the center of object <span class="black">#feature_box</span> in default speed.</h5>
+              <code>move->#feature_box</code>
+              <h4>move cursor to the center of object <span class="black">#feature_box</span> in default speed.</h4>
               <hr />
-              <h5><span class="red">move->#feature_box->3000</span></h5>
-              <h5>move cursor to the center of object <span class="black">#feature_box</span> in 3000 milliseconds.</h5>
+              <code>move->#feature_box->3000</code>
+              <h4>move cursor to the center of object <span class="black">#feature_box</span> in 3000 milliseconds.</h4>
               <hr />
-              <h5><span class="red">move->#feature_box->300,200</span></h5>
-              <h5>move cursor to object <span class="black">#feature_box</span>, offset (300px,200px) from the top-left corner of <span class="black">#feature_box</span> in default speed.</h5>
+              <code>move->#feature_box->300,200</code>
+              <h4>move cursor to object <span class="black">#feature_box</span>, offset (300px,200px) from the top-left corner of <span class="black">#feature_box</span> in default speed.</h4>
               <hr />
-              <h5><span class="red">move->#feature_box->300,200->3000</span></h5>
-              <h5>move cursor to object <span class="black">#feature_box</span>, offset (300px,200px) from the top-left corner of <span class="black">#feature_box</span> in 3000 milliseconds.</h5>
+              <code>move->#feature_box->300,200->3000</code>
+              <h4>move cursor to object <span class="black">#feature_box</span>, offset (300px,200px) from the top-left corner of <span class="black">#feature_box</span> in 3000 milliseconds.</h4>
               <hr />
-              <h5><span class="red">move->300,200</span></h5>
-              <h5>move cursor to position (300px,200px), offset from the top-left corner of the window in default speed.</span></h5>
+              <code>move->300,200</code>
+              <h4>move cursor to position (300px,200px), offset from the top-left corner of the window in default speed.</span></h4>
               <hr />
-              <h5><span class="red">move->300,200->3000</span></h5>
-              <h5>move cursor to position (300px,200px), offset from the top-left corner of the window in 3000 milliseconds.</span></h5>
+              <code>move->300,200->3000</code>
+              <h4>move cursor to position (300px,200px), offset from the top-left corner of the window in 3000 milliseconds.</span></h4>
             </div>
           </div>
           <div class="row">
-            <div class="span12">
+            <div class="span10">
               <h3>Click</h3>
-              <h5><span class="red">click->#login_btn</span></h5>
-              <h5>trigger click event on object <span class="black">#login_btn</span></h5>
+              <code>click->#login_btn</code>
+              <h4>trigger click event on object <span class="black">#login_btn</code>
             </div>
           </div>
           <div class="row">
-            <div class="span12">
+            <div class="span10">
               <h3>GoClick</h3>
-              <h5><span class="red">goclick->#login_btn</span></h5>
-              <h5>move cursor to the center of object <span class="black">#login_btn</span> and trigger click event</h5>
+              <code>goclick->#login_btn</code>
+              <h4>move cursor to the center of object <span class="black">#login_btn</span> and trigger click event.</h4>
             </div>
           </div>
           <div class="row">
-            <div class="span12">
+            <div class="span10">
               <h3>Type</h3>
-              <h5><span class="red">type->#email_input->example@gmail.com</span></h5>
-              <h5>Fill input field <span class="black">#email_input</span> with content example@gmail.com.</h5>
+              <code>type->#email_input->example@gmail.com</code>
+              <h4>Type inside <span class="black">#email_input</span> with word: example@gmail.com.</h4>
             </div>
           </div>
           <div class="row">
-            <div class="span12">
+            <div class="span10">
               <h3>GoType</h3>
-              <h5><span class="red">gotype->#email_input->example@gmail.com</span></h5>
-              <h5>Move cursor to the center of input field <span class="black">#email_input</span> and filel with content example@gmail.com character by character.</h5>
+              <code>gotype->#email_input->example@gmail.com</code>
+              <h4>Move cursor to the center of <span class="black">#email_input</span> and type out example@gmail.com character by character.</h4>
             </div>
           </div>
           <div class="row">
-            <div class="span12">
+            <div class="span10">
               <h3>ScrollX</h3>
-              <h5><span class="red">scrollx->1000</span></h5>
-              <h5>Scroll window horizontally to offset position 1000 pixels.</h5>
+              <code>scrollx->1000</code>
+              <h4>Scroll window horizontally, offsetting its left position to 1000 pixels.</h4>
               <hr />
-              <h5><span class="red">scrollx->#features_list->1000</span></h5>
-              <h5>Scroll <span class="black">#features_list</span> horizontally to offset position 1000 pixels.</h5>
+              <code>scrollx->#features_list->1000</code>
+              <h4>Scroll <span class="black">#features_list</span> horizontally, offsetting its left position to 1000 pixels.</h4>
             </div>
           </div>
           <div class="row">
-            <div class="span12">
+            <div class="span10">
               <h3>ScrollY</h3>
-              <h5><span class="red">scrollx->1000</span></h5>
-              <h5>Scroll window vertically to offset position 1000 pixels.</h5>
+              <code>scrollx->1000</code>
+              <h4>Scroll window vertically, offsetting its top position to 1000 pixels.</h4>
               <hr />
-              <h5><span class="red">scrollx->#features_list->1000</span></h5>
-              <h5>Scroll <span class="black">#features_list</span> vertically to offset position 1000 pixels.</h5>
+              <code>scrollx->#features_list->1000</code>
+              <h4>Scroll <span class="black">#features_list</span> vertically, offsetting its top position to 1000 pixels.</h4>
             </div>
           </div>
           <div class="row">
-            <div class="span12">
-              <h3>Message</h3>
-              <p>( Default classes: 'center' for an overlay of the whole window; 'bottom' for a overlay bar on bottom of the page. )</p>
-              <h5><span class="red">message->Scenario 1: Browse to a file.</span></h5>
-              <h5>Display message 'Scenario 1: Browse to a file.' in overlay style for 2000 milliseconds.</h5>
+            <div class="span10">
+              <h3>Display</h3>
+              <h4>Use default class 'center' for a centered message on a screen overlay; use default class 'bottom' for a centered message on a bottom-overlay bar.</h4>
+              <code>display->Scenario 1: Browse to a file.</code>
+              <h4>Display message 'Scenario 1: Browse to a file.' in a screen overlay for 2000 milliseconds.</h4>
               <hr />
-              <h5><span class="red">message->Scenario 1: Browse to a file.->3000</span></h5>
-              <h5>Display message 'Scenario 1: Browse to a file.' in overlay style for 3000 milliseconds</h5>
+              <code>display->Scenario 1: Browse to a file.->3000</code>
+              <h4>Display message 'Scenario 1: Browse to a file.' in a screen overlay for 3000 milliseconds.</h4>
               <hr />
-              <h5><span class="red">message->message_class->Scenario 1: Browse to a file.</span></h5>
-              <h5>Display message 'Scenario 1: Browse to a file.' in overlay style for 2000 milliseconds, use <span class="black">.message_class</span> for custom styling.</h5>
+              <code>display->message_class->Scenario 1: Browse to a file.</code>
+              <h4>Display message 'Scenario 1: Browse to a file.' in a customized overlay <span class="black">.message_class</span> for 2000 milliseconds.</h4>
               <hr />
-              <h5><span class="red">message->message_class->Scenario 1: Browse to a file.->3000</span></h5>
-              <h5>Display message 'Scenario 1: Browse to a file.' in overlay style for 3000 milliseconds, use <span class="black">.message_class</span> for custom styling.</h5>
+              <code>display->message_class->Scenario 1: Browse to a file.->3000</code>
+              <h4>Display message 'Scenario 1: Browse to a file.' in a customized overlay <span class="black">.message_class</span> for 3000 milliseconds.</h4>
             </div>
           </div>
         </div>
@@ -467,8 +506,64 @@ OTHER DEALINGS IN THE SOFTWARE.
       <section id="usage">
         <div class="container">
           <div class="row">
-            <div class="span12">
+            <div class="span10">
               <h2>Usage</h2>
+              <h3>Add Autoplay</h3>
+              <h4>Add <span class="black">autoplay.js</span> and <span class="black">autoplay.css</span> to your web application.</h4>
+              <h3>Write commands</h3>
+              <h4>Write down your steps in JSON array format, for example:</h4>
+              <code>
+                var script = [<br>
+                  "move->60,120",<br>
+                  "display->circle->DEMO",<br>
+                  "wait->1000",<br>
+                  "goclick->#feature_btn"<br>
+                ];
+              </code>
+              <h3>Run script</h3>
+              <h4>In one line call: </h4>
+              <code>
+                autoplay.initWithScript(script);
+              </code>
+              <h4>To load script dynamically, use two seperate calls: </h4>
+              <code>
+                autoplay.init();<br>
+                autoplay.loadScript(script);
+              </code>
+              <h3>Customize display message</h3>
+              <h4>Injected display message markup</h4>
+              <code>&lt;div id=&quot;autoplay_display&quot;&gt;<br>&lt;div class=&quot;message&quot;&gt;&lt;p&gt;message goes here&lt;/p&gt;&lt;/div&gt;<br>&lt;/div&gt;
+              </code>
+              <h4>Sample code to style a message in circled overlay</h4>
+              <code>
+                /* stylesheet */<br>
+                #autoplay_display.circle {<br>
+                  position: fixed;<br>
+                  width: 100%;<br>
+                  height: 100%;<br>
+                  top: 0;<br>
+                  left: 0;<br>
+                  background: rgba(0,0,0,0.8);<br>
+                }<br>
+                #autoplay_display.circle .message {<br>
+                  width: 300px;<br>
+                  height: 300px;<br>
+                  position: absolute;<br>
+                  margin-left: -150px;<br>
+                  margin-top: -150px;<br>
+                  border-radius: 150px;<br>
+                  left: 50%;<br>
+                  top: 50%;<br>
+                  background: rgba(255,255,255,0.95);<br>
+                  font-size: 45px;<br>
+                  line-height: 300px;<br>
+                  color: #030303;<br>
+                }<br>
+              </code>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span10">
             </div>
           </div>
         </div>
@@ -476,8 +571,14 @@ OTHER DEALINGS IN THE SOFTWARE.
       <section id="faqs">
         <div class="container">
           <div class="row">
-            <div class="span12">
+            <div class="span10">
               <h2>FAQs</h2>
+              <h3><i class="icon-plus icon-white"></i>What does 'autoplay' best for?</h3>
+              <h4>If you ever need to present web applicaion to clients, you often choose to deliver the application along with detailed wireframes or screen capture videos.<br>With 'autoplay', you can build user scenario right into the application, animated user flow and the application will be in one place.</h4>
+              <h3><i class="icon-plus icon-white"></i>What if I have to open different pages in one flow?</h3>
+              <h4>Although'autoplay' only runs within one page, if you break your 'big' flow into pages, you can run different scripts in each page, it will still work out when you view as one flow.</h4>
+              <h3><i class="icon-plus icon-white"></i>I don't like the green dot cursor!</h3>
+              <h4>'Green Dot' is easy to customize, if you lookup the <span class="black">autoplay.css</span>, you will notice different cursor state has differnt add-on class, simply overwrite the css stylesheet.</h4>
             </div>
           </div>
         </div>
@@ -485,16 +586,16 @@ OTHER DEALINGS IN THE SOFTWARE.
       <section id="contact">
         <div class="container">
           <div class="row">
-            <div class="span12">
+            <div class="span10">
               <h2>Contact</h2>
             </div>
           </div>
           <div class="row">
-            <div class="span12">
-              <h5>Github: <a href="https://github.com/xyfeng/">xyfeng</a></h5>
-              <h5>Twitter: <a href="https://twitter.com/xy_feng">@xy_feng</a></h5>
-              <h5>Email: <a href="mailto:xy@xystudio.cc?Subject=Autoplay JS" target="_top">xy@xystudio.cc</a></h5>
-              <h5>Lives in: <input type="text" id="state_input" data-provide="typeahead" data-items="3" data-source="[&quot;Alabama&quot;,&quot;Alaska&quot;,&quot;Arizona&quot;,&quot;Arkansas&quot;,&quot;California&quot;,&quot;Colorado&quot;,&quot;Connecticut&quot;,&quot;Delaware&quot;,&quot;Florida&quot;,&quot;Georgia&quot;,&quot;Hawaii&quot;,&quot;Idaho&quot;,&quot;Illinois&quot;,&quot;Indiana&quot;,&quot;Iowa&quot;,&quot;Kansas&quot;,&quot;Kentucky&quot;,&quot;Louisiana&quot;,&quot;Maine&quot;,&quot;Maryland&quot;,&quot;Massachusetts&quot;,&quot;Michigan&quot;,&quot;Minnesota&quot;,&quot;Mississippi&quot;,&quot;Missouri&quot;,&quot;Montana&quot;,&quot;Nebraska&quot;,&quot;Nevada&quot;,&quot;New Hampshire&quot;,&quot;New Jersey&quot;,&quot;New Mexico&quot;,&quot;New York&quot;,&quot;North Dakota&quot;,&quot;North Carolina&quot;,&quot;Ohio&quot;,&quot;Oklahoma&quot;,&quot;Oregon&quot;,&quot;Pennsylvania&quot;,&quot;Rhode Island&quot;,&quot;South Carolina&quot;,&quot;South Dakota&quot;,&quot;Tennessee&quot;,&quot;Texas&quot;,&quot;Utah&quot;,&quot;Vermont&quot;,&quot;Virginia&quot;,&quot;Washington&quot;,&quot;West Virginia&quot;,&quot;Wisconsin&quot;,&quot;Wyoming&quot;]"></input></h5>
+            <div class="span10">
+              <h4>Github: <a href="https://github.com/xyfeng/">xyfeng</a></h4>
+              <h4>Twitter: <a href="https://twitter.com/xy_feng">@xy_feng</a></h4>
+              <h4>Email: <a href="mailto:xy@xystudio.cc?Subject=Autoplay JS" target="_top">xy@xystudio.cc</a></h4>
+              <h4>Lives in: <input type="text" id="state_input" data-provide="typeahead" data-items="4" data-source="[&quot;Alabama&quot;,&quot;Alaska&quot;,&quot;Arizona&quot;,&quot;Arkansas&quot;,&quot;California&quot;,&quot;Colorado&quot;,&quot;Connecticut&quot;,&quot;Delaware&quot;,&quot;Florida&quot;,&quot;Georgia&quot;,&quot;Hawaii&quot;,&quot;Idaho&quot;,&quot;Illinois&quot;,&quot;Indiana&quot;,&quot;Iowa&quot;,&quot;Kansas&quot;,&quot;Kentucky&quot;,&quot;Louisiana&quot;,&quot;Maine&quot;,&quot;Maryland&quot;,&quot;Massachusetts&quot;,&quot;Michigan&quot;,&quot;Minnesota&quot;,&quot;Mississippi&quot;,&quot;Missouri&quot;,&quot;Montana&quot;,&quot;Nebraska&quot;,&quot;Nevada&quot;,&quot;New Hampshire&quot;,&quot;New Jersey&quot;,&quot;New Mexico&quot;,&quot;New York&quot;,&quot;North Dakota&quot;,&quot;North Carolina&quot;,&quot;Ohio&quot;,&quot;Oklahoma&quot;,&quot;Oregon&quot;,&quot;Pennsylvania&quot;,&quot;Rhode Island&quot;,&quot;South Carolina&quot;,&quot;South Dakota&quot;,&quot;Tennessee&quot;,&quot;Texas&quot;,&quot;Utah&quot;,&quot;Vermont&quot;,&quot;Virginia&quot;,&quot;Washington&quot;,&quot;West Virginia&quot;,&quot;Wisconsin&quot;,&quot;Wyoming&quot;]"></input></h4>
             </div>
           </div>
         </div>
@@ -515,26 +616,25 @@ OTHER DEALINGS IN THE SOFTWARE.
 
           // autoplay demo
           var script = [
-            "scrolly->0",
+            "display->circle->DEMO",
             "move->60,120",
-            "message->circle->DEMO",
-            "wait->1000",
+            "wait->1500",
             "goclick->#feature_btn",
-            "wait->1000",
-            "move->690,612",
-            "move->900,612->2000",
-            "wait->2000",
+            "wait->500",
+            "scrolly->1320",
+            "wait->1500",
+            "move->610,338",
+            "move->846,338->1000",
+            "wait->1500",
             "scrolly->2000",
-            "wait->2000",
+            "wait->1500",
             "goclick->.navbar ul li:nth-child(6) a",
-            "wait->2000",
-            "goType->#state_input->New Y",
-            "goClick->ul.typeahead.dropdown-menu li:nth-child(1) a",
-            "wait->1000",
-            "message->End.",
+            "wait->1500",
+            "goType->#state_input->New",
+            "goClick->ul.typeahead.dropdown-menu li:nth-child(4) a",
+            "display->End.",
           ];
-          // autoplay.init();
-          autoplay.initWithScript(script);
+          autoplay.init();
 
           $("#start_btn").on('click', function(e) {
             e.preventDefault();
