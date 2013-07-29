@@ -45,21 +45,22 @@ autoplay = {
   addControls: function() {
     var instance = this;
     $('body').on('keydown', function(e) {
-      if( e.keyCode === 32 ){
+      if( e.keyCode === 32 && instance.cursor.queue("fx").length > 0 ){
         e.preventDefault();
         e.stopPropagation();
         $('input').blur();
         $('textarea').blur();
-        if( instance.cursor.queue("fx").length > 0 ){
-          instance.cursor.queue("fx", []).hide(); 
-          console.log('autoplay Pause');
-        }
-        else if(instance.commandIndex < instance.commandLength){
-          instance.message.hide();
-          instance.cursor.show();
-          instance.runScript();
-          console.log('autoplay Resume');
-        }
+        instance.cursor.queue("fx", []).hide(); 
+        console.log('autoplay Pause');
+      }
+      else if( e.keyCode === 39 && instance.commandIndex < instance.commandLength )
+      {
+        e.preventDefault();
+        e.stopPropagation();
+        instance.message.hide();
+        instance.cursor.show();
+        instance.runScript();
+        console.log('autoplay Resume');
       }
     });
     $('body').on('mousedown', function(){

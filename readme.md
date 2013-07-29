@@ -17,7 +17,7 @@ Demo: [link](http://xyfeng.github.io/autoplay)
 *   **Display message**
 *(Display an overlay message with FADE transition, message style is fully customizable.)*
 *   **Pause and Resume**
-*(Press space bar to pause or resume the running script.)*
+*(Press space bar to pause the running script; Press Right Arrow key to resume it.)*
 *   **Quick Exit**
 *(User has full control of the mouse cursor all the time, click mouse in everywhere on the page will exit the autoplay mode.)*
 
