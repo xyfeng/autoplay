@@ -153,8 +153,8 @@ Sample code to style a message in circled overlay
 	}
 	
 ###FAQs
-#####What does 'autoplay' best for?
-If you ever need to present web applicaion to clients, you often choose to deliver the application along with detailed wireframes or screen capture videos.
+#####What does 'autoplay' do best?
+If you ever need to present web application to clients, you often choose to deliver the application along with detailed wireframes or screen capture videos.
 With 'autoplay', you can build user scenario right into the application, animated user flow and the application will be in one place.
 #####What if I have to open different pages in one flow?
 Although'autoplay' only runs within one page, if you break your 'big' flow into pages, you can run different scripts in each page, it will still work out when you view as one flow.
